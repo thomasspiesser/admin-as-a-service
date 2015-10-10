@@ -11,3 +11,6 @@ Meteor.subscribe('schemas', function(){
     Meteor.subscribe(schema.name);
   });
 });
+
+Meteor.subscribe('all');
+Meteor.subscribe('userCollection');
