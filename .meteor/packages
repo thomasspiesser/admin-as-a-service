@@ -22,5 +22,5 @@ useraccounts:iron-routing
 useraccounts:bootstrap
 accounts-password
 sacha:spin
-aldeed:simple-schema
-aldeed:collection2
+check
+alanning:roles
