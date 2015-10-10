@@ -5,10 +5,9 @@ Template.step1.events({
       if (error)
         console.log(error);
       else
-        console.log('success');
+        Router.go( "/admin" );
     });
     
-    // Router.go( "configure.account", { _id: Meteor.userId(), step: "step2" } );
   }
 });
 
