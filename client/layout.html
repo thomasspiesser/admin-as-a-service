@@ -1,0 +1,42 @@
+<head>
+</head>
+
+<!--  /////////////////////////////////////////////////// --> 
+
+<body>
+</body>
+
+<!--  /////////////////////////////////////////////////// --> 
+
+<template name="AaaSLayout">
+  <header>
+    {{ > navBar }}
+  </header>
+  <div id="main">
+    {{> yield}}
+  </div>
+<!--   <footer>
+    {{> footer}}
+  </footer> -->
+</template>
+
+<!--  /////////////////////////////////////////////////// --> 
+
+<template name="loadingTemplate">
+  <div class="loading" style="{{#if style}}{{style}}{{/if}}">{{ > spinner }}</div>
+</template>
+
+<!--  /////////////////////////////////////////////////// --> 
+
+<template name="notFound">
+  <section class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <div class="jumbotron text-center">
+          <h2>Fehler 404</h2>
+          <p>Entschuldigung, diese Seite konnte leider nicht gefunden werden.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>
