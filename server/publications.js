@@ -10,7 +10,7 @@ Meteor.publish('all', function() {
 });
 
 
-Metoer.publish('userCollection', function (id, query, options){
+Meteor.publish('userCollection', function (id, query, options){
 
   var collection = CollectionsCollection.getCollectionInstance(id);
 
