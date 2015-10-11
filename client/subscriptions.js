@@ -14,6 +14,7 @@ Meteor.subscribe('userCollections', function(){
       addCollToAdminConfig( sanitize(schema.name) );
       // instanciate the user collections
       eval( sanitize(schema.name) + "= new Mongo.Collection(schema.name);" );
+      console.log('client collection created');
       // subscribe to the data
       // Meteor.subscribe(schema.name);
     });
