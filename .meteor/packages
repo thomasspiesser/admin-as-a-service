@@ -27,3 +27,6 @@ alanning:roles
 aldeed:simple-schema
 aldeed:collection2
 msavin:mongol
+fortawesome:fontawesome
+twbs:bootstrap
+aldeed:autoform
