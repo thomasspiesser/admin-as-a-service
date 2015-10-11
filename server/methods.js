@@ -9,17 +9,21 @@ Meteor.methods({
     // instanciate connection to remote DB
     console.log('now');
 
-    var usersapp = new MongoInternals.RemoteCollectionDriver("mongodb://127.0.0.1:3031/meteor");
-    // var usersapp = new MongoInternals.RemoteCollectionDriver(mongo_url);
+    // var usersapp = new MongoInternals.RemoteCollectionDriver("mongodb://127.0.0.1:3031/meteor");
+    var usersapp = new MongoInternals.RemoteCollectionDriver(mongo_url);
     Schemas = new Mongo.Collection("aaas_schemas", {_driver: usersapp});
+
+
+    var ids = [];
 
     Schemas.find().forEach(function (schema) {
       // store the user collections
-      CollectionsCollection.insert({
+      var id = CollectionsCollection.insert({
         userId: Meteor.userId(),
         url: mongo_url,
         name: sanitize(schema.name)
       });
+      ids.push(id);
       // eval( sanitize(schema.name) + "= new Mongo.Collection(schema.name, {_driver: usersapp});" );
       // get a reference to the collection name
       // eval("x="+sanitize(schema.name));
@@ -29,11 +33,8 @@ Meteor.methods({
     // get list of collections
     // create simpleSchemas
     // create AdminConfig = {} using collection name
-    return;
+    return ids;
   }
 });
 
-Meteor.publish('schemas', function () {
-  return Schemas.find();
-});
 

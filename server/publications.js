@@ -6,14 +6,37 @@ Meteor.publish('userData', function () {
 });
 
 Meteor.publish('all', function() {
-  return CollectionsCollection.find()
+  if (! this.userId)
+    this.ready();
+  return CollectionsCollection.find({ userId: this.userId });
+});
+
+Meteor.publish('schemas', function () {
+  return Schemas.find();
 });
 
 
 Meteor.publish('userCollection', function (id, query, options){
+  if (!id)
+    this.ready();
+  query = query || {};
+  options = options || {};
 
   var collection = CollectionsCollection.getCollectionInstance(id);
 
   return collection.find(query, options);
 });
 
+Meteor.publish('userCollections', function (){
+  // console.log('in here');
+
+  var collections = _.map(CollectionsCollection.find({ userId: this.userId }).fetch(), function (collection) {
+    return CollectionsCollection.getCollectionInstance(collection._id);
+  });
+  // console.log(collections);
+  cursors =_.map(collections, function (collection){
+    return collection.find();
+  });
+  // console.log(cursors);
+  return cursors;
+});

@@ -13,4 +13,4 @@ Schemas = new Mongo.Collection('aaas_schemas');
 // });
 
 Meteor.subscribe('all');
-Meteor.subscribe('userCollection');
+Meteor.subscribe('userCollections');
